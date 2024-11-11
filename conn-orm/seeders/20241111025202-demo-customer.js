@@ -1,0 +1,113 @@
+"use strict";
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert("customers", [
+      {
+        first_name: "Babara",
+        last_name: "MacCaffrey",
+        birth_date: "1986-03-28",
+        phone: "781-932-9754",
+        address: "0 Sage Terrace",
+        city: "Waltham",
+        state: "MA",
+        points: 2273,
+      },
+      {
+        first_name: "Ines",
+        last_name: "Brushfield",
+        birth_date: "1986-04-13",
+        phone: "804-427-9456",
+        address: "14187 Commercial Trail",
+        city: "Hampton",
+        state: "VA",
+        points: 947,
+      },
+      {
+        first_name: "Freddi",
+        last_name: "Boagey",
+        birth_date: "1985-02-07",
+        phone: "719-724-7869",
+        address: "251 Springs Junction",
+        city: "Colorado Springs",
+        state: "CO",
+        points: 2967,
+      },
+      {
+        first_name: "Ambur",
+        last_name: "Roseburgh",
+        birth_date: "1974-04-14",
+        phone: "407-231-8017",
+        address: "30 Arapahoe Terrace",
+        city: "Orlando",
+        state: "FL",
+        points: 457,
+      },
+      {
+        first_name: "Clemmie",
+        last_name: "Betchley",
+        birth_date: "1973-11-07",
+        phone: NULL,
+        address: "5 Spohn Circle",
+        city: "Arlington",
+        state: "TX",
+        points: 3675,
+      },
+      {
+        first_name: "Elka",
+        last_name: "Twiddell",
+        birth_date: "1991-09-04",
+        phone: "312-480-8498",
+        address: "7 Manley Drive",
+        city: "Chicago",
+        state: "IL",
+        points: 3073,
+      },
+      {
+        first_name: "Ilene",
+        last_name: "Dowson",
+        birth_date: "1964-08-30",
+        phone: "615-641-4759",
+        address: "50 Lillian Crossing",
+        city: "Nashville",
+        state: "TN",
+        points: 1672,
+      },
+      {
+        first_name: "Thacher",
+        last_name: "Naseby",
+        birth_date: "1993-07-17",
+        phone: "941-527-3977",
+        address: "538 Mosinee Center",
+        city: "Sarasota",
+        state: "FL",
+        points: 205,
+      },
+      {
+        first_name: "Romola",
+        last_name: "Rumgay",
+        birth_date: "1992-05-23",
+        phone: "559-181-3744",
+        address: "3520 Ohio Trail",
+        city: "Visalia",
+        state: "CA",
+        points: 1486,
+      },
+      {
+        first_name: "Levy",
+        last_name: "Mynett",
+        birth_date: "1969-10-13",
+        phone: "404-246-3370",
+        address: "68 Lawn Avenue",
+        city: "Atlanta",
+        state: "GA",
+        points: 79,
+      },
+    ]);
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("customers", null, {});
+  },
+};

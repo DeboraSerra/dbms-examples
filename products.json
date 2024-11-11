@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Foam Dinner Plate",
+    "quantityInStock": 70,
+    "unitPrice": 1.21
+  },
+  {
+    "id": 2,
+    "name": "Pork - Bacon,back Peameal",
+    "quantityInStock": 49,
+    "unitPrice": 4.65
+  },
+  {
+    "id": 3,
+    "name": "Lettuce - Romaine, Heart",
+    "quantityInStock": 38,
+    "unitPrice": 3.35
+  },
+  {
+    "id": 4,
+    "name": "Brocolinni - Gaylan, Chinese",
+    "quantityInStock": 90,
+    "unitPrice": 4.53
+  },
+  {
+    "id": 5,
+    "name": "Sauce - Ranch Dressing",
+    "quantityInStock": 94,
+    "unitPrice": 1.63
+  },
+  {
+    "id": 6,
+    "name": "Petit Baguette",
+    "quantityInStock": 14,
+    "unitPrice": 2.39
+  },
+  {
+    "id": 7,
+    "name": "Sweet Pea Sprouts",
+    "quantityInStock": 98,
+    "unitPrice": 3.29
+  },
+  {
+    "id": 8,
+    "name": "Island Oasis - Raspberry",
+    "quantityInStock": 26,
+    "unitPrice": 0.74
+  },
+  { "id": 9, "name": "Longan", "quantityInStock": 67, "unitPrice": 2.26 },
+  { "id": 10, "name": "Broom - Push", "quantityInStock": 6, "unitPrice": 1.09 }
+]
