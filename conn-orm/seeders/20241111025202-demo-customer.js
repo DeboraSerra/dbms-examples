@@ -48,7 +48,7 @@ module.exports = {
         first_name: "Clemmie",
         last_name: "Betchley",
         birth_date: "1973-11-07",
-        phone: NULL,
+        phone: "312-480-8498",
         address: "5 Spohn Circle",
         city: "Arlington",
         state: "TX",

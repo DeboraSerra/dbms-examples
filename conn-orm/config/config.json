@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "dbms_example",
+    "database": "dbms_example_sequelize",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
