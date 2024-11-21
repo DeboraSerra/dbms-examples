@@ -8,7 +8,7 @@ VALUES ('Jane', 'Doe', '1999-11-11', '000-000-0000', 'address', 'Vancouver', 'BC
 
 -- Insert order using a subquery to get the customer_id
 INSERT INTO orders (customer_id, order_date, status, comments, shipped_date, shipper_id)
-VALUES ((SELECT id FROM customers WHERE first_name = 'Jane' AND last_name = 'Doe'), CURRENT_TIMESTAMP, 1, '', NULL, 1);
+VALUES ((SELECT c.id FROM customers as c WHERE first_name = 'Jane' AND last_name = 'Doe'), CURRENT_TIMESTAMP, 1, '', NULL, 1);
 
 -- Commit the transaction
 COMMIT;

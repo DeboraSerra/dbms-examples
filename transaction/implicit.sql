@@ -3,26 +3,8 @@
 SET IMPLICIT_TRANSACTIONS ON;
 
 INSERT INTO
-    customers (
-        first_name,
-        last_name,
-        birth_date,
-        phone,
-        address,
-        city,
-        state,
-        points
-    )
-VALUES (
-        'Jane',
-        'Doe',
-        '1999-11-11',
-        '000-000-0000',
-        'address',
-        'Vancouver',
-        'BC',
-        100
-    );
+    customers (first_name, last_name)
+VALUES ('Jane', 'Doe');
 
 INSERT INTO
     orders (
@@ -42,5 +24,7 @@ WHERE
 SELECT @@TRANCOUNT AS OpenTransactions;
 
 COMMIT;
+
+ROLLBACK;
 
 SELECT @@TRANCOUNT AS OpenTransactions;

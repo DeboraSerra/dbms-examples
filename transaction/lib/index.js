@@ -2,46 +2,80 @@ const conn = require("./connection");
 const http = require("http");
 
 const server = http.createServer(async (req, res) => {
-  await conn.getConnection().beginTransaction();
+  if (req.url.includes("/correct")) return correct(req, res);
+  const connection = await conn.getConnection();
+  await connection.beginTransaction();
   try {
-    const [result1] = await conn.execute(
-      "INSERT INTO customers VALUES (?,?,?,?,?,?,?)",
-      {
-        first_name: "Babara",
-        last_name: "MacCaffrey",
-        birth_date: "1986-03-28",
-        phone: "781-932-9754",
-        address: "0 Sage Terrace",
-        city: "Waltham",
-        state: "MA",
-        points: 2273,
-      }
+    const [result1] = await connection.execute(
+      "INSERT INTO customers (first_name, last_name, birth_date, phone, address, city, state, points) VALUES (?,?,?,?,?,?,?,?)",
+      [
+        "Jane",
+        "Doe",
+        "1986-03-28",
+        "781-932-9754",
+        "0 Sage Terrace",
+        "Vancouver",
+        "BC",
+        2273,
+      ]
     );
     const log = "Customer " + result1.insertId + " added";
+    console.log(result1);
     console.log(log);
-    const [result2] = await conn.execute(
+    const [result2] = await connection.execute(
       `INSERT INTO orders (customer_id, order_date, status, comments, shipped_date, shipper_id) VALUES (?, ?, ?, ?, ?, ?);`,
-      {
-        customer_id: result1.insertId,
-        order_date: new Date(),
-        status: 1,
-        comments: "",
-        shipped_date: null,
-        shipper_id: 1,
-      }
+      [null, new Date(), 1, "", null, 1]
     );
     console.log(result2);
-    await conn.commit();
-    res.end(result2);
+    await connection.commit();
+    res.end(JSON.stringify(result2));
     console.log("Transaction Completed Successfully.");
   } catch (err) {
-    await conn.rollback();
+    await connection.rollback();
     console.error("Transaction Failed:", err);
     res.statusCode = 400;
     res.end("error");
   } finally {
-    await conn.end();
+    connection.release();
   }
 });
+
+const correct = async (req, res) => {
+  const connection = await conn.getConnection();
+  await connection.beginTransaction();
+  try {
+    const [result1] = await connection.execute(
+      "INSERT INTO customers (first_name, last_name, birth_date, phone, address, city, state, points) VALUES (?,?,?,?,?,?,?,?)",
+      [
+        "Jane",
+        "Doe",
+        "1986-03-28",
+        "781-932-9754",
+        "0 Sage Terrace",
+        "Vancouver",
+        "BC",
+        2273,
+      ]
+    );
+    const log = "Customer " + result1.insertId + " added";
+    console.log(result1);
+    console.log(log);
+    const [result2] = await connection.execute(
+      `INSERT INTO orders (customer_id, order_date, status, comments, shipped_date, shipper_id) VALUES (?, ?, ?, ?, ?, ?);`,
+      [result1.insertId, new Date(), 1, "", null, 1]
+    );
+    console.log(result2);
+    await connection.commit();
+    res.end(JSON.stringify(result2));
+    console.log("Transaction Completed Successfully.");
+  } catch (err) {
+    await connection.rollback();
+    console.error("Transaction Failed:", err);
+    res.statusCode = 400;
+    res.end("error");
+  } finally {
+    connection.release();
+  }
+};
 
 server.listen(3000, () => console.log("running on http://localhost:3000"));
